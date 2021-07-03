@@ -5,12 +5,6 @@
 
     <body>
         <div>
-            Name
-            <input id="name" type="text">
-
-            <br>
-            <br>
-
             Command
             <input id="command" type="text">
             <input id="send" type="button" value="Send Command" onclick="send()">
@@ -50,10 +44,10 @@
             };
 
             function send() {
-                if (socket.readyState == 2) {
+                if (socket.readyState == 1) {
                     socket.send(document.getElementById("command").value);
 
-                    document.getElementById("messages").innerHTML += `<- ${event.data}<br>`;
+                    document.getElementById("messages").innerHTML += `<- ${document.getElementById("command").value}<br>`;
                 } else {
                     document.getElementById("messages").innerHTML += `[Socket not ready]<br>`;
                 }
@@ -62,8 +56,8 @@
 
         <style>
             #messages {
-                width: 80%;
-                height: 80%;
+                width: 90vw;
+                height: 80vh;
                 border: 1px solid black;
             }
         </style>
